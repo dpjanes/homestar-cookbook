@@ -14,7 +14,7 @@ var homestar = require('homestar');
 homestar.recipe({
     group: "Demo",
     name: "Repeat 3",
-    run: function(context) {
+    onclick: function(context) {
         context.message("");
 
         var count = 0;

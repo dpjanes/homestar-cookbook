@@ -1,5 +1,5 @@
 /*
- *  wemo.js
+ *  wemo-christmas.js
  *
  *  David Janes
  *  IOTDB.org
@@ -9,32 +9,37 @@
  */
 
 var homestar = require('homestar');
-
-homestar = require('homestar');
 iot = homestar.iot();
 
-wemos = iot.connect('WeMoSwitch')
+lights = iot.connect('WeMoSwitch')
+// lights = iot.connect('WeMoSwitch').with_name("Christmas WeMo")
+// lights = iot.connect('LIFXLight')
 
 homestar.recipe({
     group: "Christmas",
     name: "Tree",
-    values: [
-        "On",
-        "Off",
-    ],
-    run: function(context, value) {
-        var v = false;
-        if (value == "On") {
-            v = true;
-        } else if (value == "Off") {
-            v = false;
-        } else {
-            return;
-        }
+    value: homestar.value.boolean,
+    watch: [ lights ],
+    oninit: function(context) {
+        /* turn off at 11pm */
+        timers.day_timer({
+            hour: 23
+        }, function(event) {
+            lights.set(":on", false);
+        });
 
-        wemos.set(':on', v);
+        /* turn on at 7:30a */
+        timers.day_timer({
+            hour: 7,
+            minute: 30
+        }, function(event) {
+            lights.set(":on", true);
+        });
+    },
+    onclick: function(context, value) {
+        lights.set(':on', value);
 
-        context.message("Christmas tree is", v ? "on" : "off");
+        context.message("Christmas tree is", value ? "on" : "off");
         context.done();
     }
 });
