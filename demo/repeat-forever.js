@@ -11,8 +11,8 @@
 
 var homestar = require('homestar');
 
+homestar.cookbook("Demo");
 homestar.recipe({
-    group: "Demo",
     name: "Repeat Forever",
     onclick: function(context) {
         context.message("");

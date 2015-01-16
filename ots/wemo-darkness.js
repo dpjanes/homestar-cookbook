@@ -15,8 +15,8 @@ lights = iot.connect('WeMoSwitch')
 // lights = iot.connect('WeMoSwitch').with_name("Christmas WeMo")
 // lights = iot.connect('LIFXLight')
 
+homestar.cookbook("Basement");
 homestar.recipe({
-    group: "Basement",
     name: "Lights",
     value: homestar.value.boolean,
     watch: [ lights ],
