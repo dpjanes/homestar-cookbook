@@ -27,7 +27,7 @@ homestar.recipe({
         });
 
         // 30 minutes before sunrise
-        homestar.timers.sunrise(-60 * 60, function(when) {
+        homestar.timers.sunrise(-30 * 60, function(when) {
             lights.set(":on", false);
         });
     },
