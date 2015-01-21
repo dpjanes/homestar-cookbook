@@ -22,14 +22,14 @@ homestar.recipe({
     watch: [ lights ],
     oninit: function(context) {
         /* turn off at 11pm */
-        timers.day_timer({
+        homestar.timers.day_timer({
             hour: 23
         }, function(event) {
             lights.set(":on", false);
         });
 
         /* turn on at 7:30a */
-        timers.day_timer({
+        homestar.timers.day_timer({
             hour: 7,
             minute: 30
         }, function(event) {

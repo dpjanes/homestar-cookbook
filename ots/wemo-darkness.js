@@ -21,11 +21,13 @@ homestar.recipe({
     value: homestar.value.boolean,
     watch: [ lights ],
     oninit: function(context) {
-        homestar.timers.sunset(60 * 60, function(when) {
+        // 30 minutes after sunset
+        homestar.timers.sunset(30 * 60, function(when) {
             lights.set(":on", true);
         });
 
-        homestar.timers.sunset(60 * 60, function(when) {
+        // 30 minutes before sunrise
+        homestar.timers.sunrise(-60 * 60, function(when) {
             lights.set(":on", false);
         });
     },
