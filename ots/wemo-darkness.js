@@ -18,7 +18,7 @@ lights = iot.connect('WeMoSwitch')
 homestar.cookbook("Basement");
 homestar.recipe({
     name: "Lights",
-    value: homestar.value.boolean,
+    value: homestar.boolean.on,
     watch: [ lights ],
     oninit: function(context) {
         // 30 minutes after sunset

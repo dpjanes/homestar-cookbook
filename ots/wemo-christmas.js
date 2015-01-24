@@ -18,7 +18,7 @@ lights = iot.connect('WeMoSwitch')
 homestar.cookbook("Christmas");
 homestar.recipe({
     name: "Tree",
-    value: homestar.value.boolean,
+    value: homestar.boolean.on,
     watch: [ lights ],
     oninit: function(context) {
         /* turn off at 11pm */
