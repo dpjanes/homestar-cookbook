@@ -9,10 +9,11 @@
  *  and so on when pushed
  */
 
-var homestar = require('homestar');
+var iotdb = require('iotdb');
 
-homestar.cookbook("Demo");
-homestar.recipe({
+iotdb.cookbook("Demo");
+iotdb.recipe({
+    enabled: True,
     name: "Repeat Forever",
     onclick: function(context) {
         context.message("");
